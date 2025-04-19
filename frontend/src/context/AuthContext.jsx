@@ -1,4 +1,5 @@
-import { createContext, useState, useEffect } from 'react'
+// src/context/AuthContext.js
+import { createContext, useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import API from '../services/api'
 
@@ -25,7 +26,7 @@ export const AuthProvider = ({ children }) => {
       navigate('/dashboard')
     } catch (err) {
       console.error('Login failed', err)
-      alert('Login failed')
+      alert('Login failed: Invalid credentials')
     }
   }
 
@@ -42,4 +43,4 @@ export const AuthProvider = ({ children }) => {
   )
 }
 
-export { AuthContext }
+export const useAuth = () => useContext(AuthContext)
